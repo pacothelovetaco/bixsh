@@ -1,0 +1,26 @@
+*.gem
+*.rbc
+.bundle
+.config
+.yardoc
+Gemfile.lock
+InstalledFiles
+_yardoc
+coverage
+doc/
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+*.swp
+*.swo
+*.!sync
+.DS_Store
+logs/*
+credentials.yml
+todo.txt
+# My special commands
+aiml/bixsby/my_commands.aiml

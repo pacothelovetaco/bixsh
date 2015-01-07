@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+$:.push File.expand_path(File.dirname(__FILE__) + '/../lib')
+
+require "bixsby-shell/shell"
+require "bixsby-shell/simple"
+require "bixsby-shell/gui"
+require "optparse"
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: bixsby [OPTIONS]"
+  opts.separator  ""
+  opts.separator  "Options"
+
+  opts.on('-h', '--help', 'help') { puts opts; exit; }
+  opts.on('--gui', 'Run in GUI mode') { @gui = true}
+  
+  opts.on('-s', '--server IP', 'IP of the server') do |ip|
+    options[:ip] = ip
+  end
+end.parse!
+
+server = TCPSocket.open(options[:ip], 2001)
+
+if @gui
+  BixsbyShell::Gui.new(server)
+else
+  BixsbyShell::Simple.new(server)
+end
